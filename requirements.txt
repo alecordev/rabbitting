@@ -1,0 +1,4 @@
+amqpstorm
+pika
+python-dotenv
+shortuuid
