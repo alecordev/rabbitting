@@ -16,16 +16,14 @@ try:
         routing_key="order.report",
     )
 
-
     def callback(ch, method, properties, body):
         payload = json.loads(body)
-        print('- Generating report')
+        print("- Generating report")
         print(f"{json.dumps(payload)}")
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
-
     channel.basic_consume(on_message_callback=callback, queue=queue_name)
-    print(' [*] Waiting for report messages. CTRL-C to exit.')
+    print(" [*] Waiting for report messages. CTRL-C to exit.")
 
     channel.start_consuming()
 except Exception as e:

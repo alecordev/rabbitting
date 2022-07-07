@@ -6,13 +6,13 @@ import pika
 
 
 def process_export():
-    print('Long running process in thread')
+    print("Long running process in thread")
     time.sleep(10)
 
 
 def data_handler(channel, method, properties, body):
     # body = json.loads(body)
-    print('Message received! Will do some work...')
+    print("Message received! Will do some work...")
 
     thread = threading.Thread(target=process_export, args=())
     thread.start()
@@ -35,7 +35,7 @@ def main():
     channel.basic_qos(prefetch_count=1)
     channel.basic_consume(on_message_callback=data_handler, queue="example")
     try:
-        print('Consuming...')
+        print("Consuming...")
         channel.start_consuming()
     except KeyboardInterrupt:
         channel.stop_consuming()

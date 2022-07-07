@@ -1,4 +1,4 @@
-# RabbitMQ examples
+# RabbitMQ Python examples
 
 - `pip install pika`
 - `pip install amqpstorm`
